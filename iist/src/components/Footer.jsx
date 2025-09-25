@@ -1,5 +1,6 @@
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import React from "react";
+import logo from "../images/IISD.855d404de3a326ca6293.webp"; // apna logo path daalna
 export default function Footer() {
   return (
     <footer className="bg-[#003366] text-white py-10 px-6">
@@ -9,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col items-center md:items-start space-y-6">
           {/* Logo */}
           <img
-            src="/logo.png" // apna logo path daalna
+            src={logo}// apna logo path daalna
             alt="Logo"
             className="w-24 h-24"
           />
