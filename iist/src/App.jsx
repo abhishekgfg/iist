@@ -10,8 +10,8 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Home route */}
-        <Route path="/Results" element={<StudentLogin/>} /> {/* Student Login route */}
+        <Route path="/Home" element={<Home />} /> {/* Home route */}
+        <Route path="/" element={<StudentLogin/>} /> {/* Student Login route */}
       </Routes>
       <Footer />
     </Router>
