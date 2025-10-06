@@ -1,13 +1,17 @@
 import express from "express";
-import { addSkillProgram, getSkillPrograms } from "../Controllers/skillProgramController.js";
-import { upload } from "../utils/multerConfig.js"; // your multer file
+import {
+  addSkillProgram,
+  getSkillPrograms,
+  deleteSkillProgram,
+  updateSkillProgram,
+} from "../Controllers/skillProgramController.js";
+import { upload } from "../Middleware/upload.js";
 
 const router = express.Router();
 
-// Add new skill program
 router.post("/add", upload.single("image"), addSkillProgram);
-
-// Get all skill programs
 router.get("/", getSkillPrograms);
+router.delete("/:id", deleteSkillProgram);
+router.put("/:id", upload.single("image"), updateSkillProgram);
 
 export default router;

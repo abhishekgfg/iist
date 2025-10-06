@@ -34,7 +34,7 @@ export default function OurAssociates() {
       {/* Section Title */}
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-blue-900 uppercase">
-          Skill Development Programs
+         OUR ASSOCIATES
         </h2>
       </div>
 

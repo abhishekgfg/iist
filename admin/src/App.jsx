@@ -3,39 +3,30 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
-import ProgramUpload from "./pages/ProgramUpload";
-import Courses from "./pages/Courses";
 import AdminSkillProgram from "./pages/AdminSkillProgram";
+import Result from "./pages/Result";
+import ViewResults from "./pages/ViewResults";
+import AdminGallery from "./pages/AdminGallery";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        {/* Default page is Login */}
-        <Route path="/" element={<Login />} />
-
-        {/* Common Dashboard inside Layout */}
-        <Route
-          path="/dashboard"
-          element={
-            <Layout>
-              <Dashboard />
-            </Layout>
-          }
-        />
-      <Route
-          path="/upload"
-          element={
-            <Layout>
-              <AdminSkillProgram/>
-            </Layout>
-          }
-        />
-
-        {/* Catch all unknown routes */}
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+          <Route path="/admin_skill" element={<Layout><AdminSkillProgram /></Layout>} />
+          <Route path="/results" element={<Layout><Result /></Layout>} />
+          <Route path="/view-results" element={<Layout><ViewResults /></Layout>} />
+          <Route path="/admin-gallery" element={<Layout><AdminGallery /></Layout>} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Router>
+      {/* Move ToastContainer **outside Router** so it always exists */}
+      <ToastContainer position="top-right" autoClose={3000} />
+    </>
   );
 }
 

@@ -14,38 +14,82 @@ import image3 from "../images/skill-india.496d43bf990bfdbf029b.webp";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header>
-      {/* 🔹 Top Bar */}
-      <div className="bg-[#003366] text-white text-sm px-4 md:px-8 py-2 flex justify-between items-center">
-        <div className="flex items-center gap-4 md:gap-6">
-          <span className="flex items-center gap-2">
-            <FaPhoneAlt /> +91-8130543714
-          </span>
-          <span className="flex items-center gap-2">
-            <FaEnvelope /> info@gmail.com
-          </span>
-        </div>
-        <div className="hidden md:flex items-center gap-4 text-lg">
-          <FaFacebookF className="cursor-pointer hover:text-gray-300" />
-          <FaTwitter className="cursor-pointer hover:text-gray-300" />
-          <FaYoutube className="cursor-pointer hover:text-gray-300" />
-        </div>
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="hover:underline">Centre Login</a>
-          <a href="/Results" className="hover:underline">Online Results</a>
-        </div>
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden text-2xl cursor-pointer" onClick={toggleMenu}>
-          {menuOpen ? <MdClose /> : <MdMenu />}
-        </div>
+  <header>
+  {/* ✅ Mobile Top Contact Bar (sabse upar) */}
+  <div className="md:hidden bg-[#003366] text-white text-xs px-4 py-1 flex justify-between items-center">
+    <span className="flex items-center gap-2">
+      <FaPhoneAlt className="text-[10px]" /> +91-8130543714
+    </span>
+    <span className="flex items-center gap-2">
+      <FaEnvelope className="text-[10px]" /> info@gmail.com
+    </span>
+  </div>
+<div className="md:hidden bg-[#003366] text-white text-xs px-4 py-1 flex justify-between items-center">
+    <div className="flex items-center gap-3 text-lg">
+      <FaFacebookF />
+      <FaTwitter />
+      <FaYoutube />
+    </div>
+    <div className="flex items-center gap-4">
+      <a href="#" className="hover:underline">Centre Login</a>
+      <a href="/Results" className="hover:underline">Online Results</a>
+    </div>
+  </div>
+  {/* 🔹 Top Bar */}
+  <div className="bg-[#003366] text-white text-sm px-4 md:px-8 py-2 flex justify-between items-center">
+    {/* ✅ Mobile: Logo + Name */}
+    <div className="flex items-center gap-3 md:hidden">
+      <img src={logo} alt="Logo" className="h-12 w-12 object-contain" />
+      <div>
+        <h1 className="text-sm font-bold leading-snug">
+          INDIAN INSTITUTE OF SKILL DEVELOPMENT
+        </h1>
+        <span className="block text-xs">
+          भारतीय कौशल विकास संस्थान
+        </span>
       </div>
+    </div>
 
-      {/* 🔹 Middle Header */}
-      <div className="flex flex-col md:flex-row justify-between items-center px-4 md:px-8 py-4 gap-4 md:gap-0">
+    {/* ✅ Mobile Menu */}
+    <div className="md:hidden text-2xl cursor-pointer" onClick={toggleMenu}>
+      {menuOpen ? <MdClose /> : <MdMenu />}
+    </div>
+
+    {/* ✅ Desktop Topbar (unchanged) */}
+    <div className="hidden md:flex items-center gap-4 md:gap-6">
+      <span className="flex items-center gap-2">
+        <FaPhoneAlt /> +91-8130543714
+      </span>
+      <span className="flex items-center gap-2">
+        <FaEnvelope /> info@gmail.com
+      </span>
+    </div>
+    <div className="hidden md:flex items-center gap-4 text-lg">
+      <FaFacebookF className="cursor-pointer hover:text-gray-300" />
+      <FaTwitter className="cursor-pointer hover:text-gray-300" />
+      <FaYoutube className="cursor-pointer hover:text-gray-300" />
+    </div>
+ <div className="hidden md:flex items-center gap-6">
+  <a href="#" className="font-semibold italic text-sm hover:text-blue-200 transition">
+    Centre Login
+  </a>
+  <a href="/Results" className="font-semibold italic text-sm hover:text-blue-200 transition">
+    Online Results
+  </a>
+</div>
+
+
+  </div>
+
+  {/* ✅ Mobile Extra Row: Social + Links */}
+  
+
+
+      {/* 🔹 Middle Header (desktop only) */}
+      <div className="hidden md:flex flex-col md:flex-row justify-between items-center px-4 md:px-8 py-4 gap-4 md:gap-0">
         <div className="flex items-center gap-4">
           <img src={logo} alt="Logo" className="h-20" />
           <div>
@@ -70,11 +114,95 @@ const Header = () => {
         {/* Desktop Menu */}
         <ul className="hidden md:flex justify-center gap-6 py-3 text-white font-semibold text-sm flex-wrap">
           <li><a href="/" className="hover:underline">Home</a></li>
-          <li><a href="#" className="hover:underline">About Us</a></li>
-          <li><a href="#" className="hover:underline">Programs</a></li>
-          <li><a href="#" className="hover:underline">Institute Zone</a></li>
-          <li><a href="#" className="hover:underline">Student Zone</a></li>
-          <li><a href="#" className="hover:underline">Franchise</a></li>
+          {/* About Us */}
+          <li className="relative group">
+            <a href="#" className="hover:underline flex items-center gap-1">
+              About Us <span className="text-xs">▼</span>
+            </a>
+            <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
+              <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                <a href="/inspiration">Our Inspirations</a>
+              </li>
+              <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                <a href="/skill-development">Skill Development in India</a>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <a href="/affiliations">Affiliations</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="/skilldevelopmentprogram" className="hover:underline">Programs</a></li>
+          {/* Institute Zone */}
+          <li className="relative group">
+            <a href="#" className="hover:underline flex items-center gap-1">
+              Institute Zone <span className="text-xs">▼</span>
+            </a>
+            <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
+              <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                <a href="/center-login">Center Login</a>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <a href="#">Verify Your Center Code</a>
+              </li>
+            </ul>
+          </li>
+          {/* Student Zone */}
+          <li className="relative group">
+            <a href="#" className="hover:underline flex items-center gap-1">
+              Student Zone <span className="text-xs">▼</span>
+            </a>
+            <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                <a href="#">Student Login</a>
+              </li>
+              <li className="relative group/admissions">
+                <a href="#" className="px-4 py-2 block hover:bg-gray-100 flex justify-between items-center">
+                  Admissions <span className="text-xs">▶</span>
+                </a>
+                <ul className="absolute left-full top-0 bg-white text-black rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover/admissions:opacity-100 group-hover/admissions:visible transition-all duration-200 z-50">
+                  <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                    <a href="#">On-demand Admission Form</a>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <a href="#">General Admission Form</a>
+                  </li>
+                </ul>
+              </li>
+              <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                <a href="#">Academic Calendar</a>
+              </li>
+              <li className="relative group/exam">
+                <a href="#" className="px-4 py-2 block hover:bg-gray-100 flex justify-between items-center">
+                  Examination <span className="text-xs">▶</span>
+                </a>
+                <ul className="absolute left-full top-0 bg-white text-black rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover/exam:opacity-100 group-hover/exam:visible transition-all duration-200 z-50">
+                  <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                    <a href="#">On-demand Examination Form</a>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-gray-100">
+                    <a href="#">Calendar Examination Form</a>
+                  </li>
+                </ul>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100 border-t border-gray-200">
+                <a href="#">Advance Learning Management System</a>
+              </li>
+            </ul>
+          </li>
+          {/* Franchise */}
+          <li className="relative group">
+            <a href="#" className="hover:underline flex items-center gap-1">
+              Franchise <span className="text-xs">▼</span>
+            </a>
+            <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
+              <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
+                <a href="#">Apply for New Franchisee</a>
+              </li>
+              <li className="px-4 py-2 hover:bg-gray-100">
+                <a href="#">Center Renewal</a>
+              </li>
+            </ul>
+          </li>
           <li><a href="#" className="hover:underline">Internship</a></li>
           <li><a href="#" className="hover:underline">Training</a></li>
           <li><a href="#" className="hover:underline">Placement</a></li>
@@ -83,12 +211,8 @@ const Header = () => {
           <li><a href="#" className="hover:underline">Contact Us</a></li>
         </ul>
 
-        {/* Mobile Slide-in Sidebar */}
-        <div
-          className={`fixed top-0 left-0 h-full w-64 bg-[#003366] z-20 transform ${
-            menuOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out md:hidden shadow-lg`}
-        >
+        {/* Mobile Sidebar */}
+        <div className={`fixed top-0 left-0 h-full w-64 bg-[#003366] z-20 transform ${menuOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out md:hidden shadow-lg`}>
           <ul className="flex flex-col gap-3 py-8 px-6 text-white font-semibold text-sm">
             <li><a href="/" className="hover:underline">Home</a></li>
             <li><a href="#" className="hover:underline">About Us</a></li>

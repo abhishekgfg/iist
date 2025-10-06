@@ -1,28 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "../api/axiosInstance";
 
-// Import images
-import csImage from "../images/ComputerScienceand IT-min.c7f0944a13a56918092d.webp";
-import teacherImage from "../images/teachertrainingicon-min.d40201f607973d2c2b83.webp";
-import hospitalImage from "../images/HospitalandHealhManagementicon-min.6e9b09d997aa34cdd722.webp";
-import beautyImage from "../images/BeautyWellnessandCosmetics-min.bb3992c2b746aba3f411.webp";
-import artsImage from "../images/ArtsandPaintings-min.33d059186ae9a38d8308.webp";
-import tailoringImage from "../images/Tailoring-min.586f38717e25555646c2.webp";
-import businessImage from "../images/BusinessManagement-min.3f01e97603804d6dcb67.webp";
-import safetyImage from "../images/safety-management-leadership-min.7c10e6107c9ecccdfaf1.webp";
+export default function SkillDevelopmentPrograms() {
+  const [programs, setPrograms] = useState([]);
+  const [error, setError] = useState("");
 
-// Program data with imported images
-const programs = [
-  { title: "Computer Science and IT", img: csImage },
-  { title: "Teacher Training", img: teacherImage },
-  { title: "Hospital and Health Management", img: hospitalImage },
-  { title: "Beauty, Wellness and Cosmetics", img: beautyImage },
-  { title: "Arts and Paintings", img: artsImage },
-  { title: "Tailoring", img: tailoringImage },
-  { title: "Business Management", img: businessImage },
-  { title: "Safety Management", img: safetyImage },
-];
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const res = await axios.get("/skill-programs");
+        setPrograms(Array.isArray(res.data) ? res.data : []);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load programs. Please try again later.");
+      }
+    };
+    fetchPrograms();
+  }, []);
 
-export default function OurAssociates() {
   return (
     <div className="bg-white py-10">
       {/* Section Title */}
@@ -32,6 +27,10 @@ export default function OurAssociates() {
         </h2>
       </div>
 
+      {error && (
+        <p className="text-center text-red-600 font-medium mb-6">{error}</p>
+      )}
+
       {/* Grid Layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 md:px-16">
         {programs.map((program, index) => (
@@ -40,7 +39,7 @@ export default function OurAssociates() {
             className="relative rounded-xl overflow-hidden shadow-md group"
           >
             <img
-              src={program.img}
+              src={`http://localhost:5000/uploads/${program.image}`}
               alt={program.title}
               className="w-full h-52 object-cover transform transition-transform duration-500 group-hover:scale-110"
             />

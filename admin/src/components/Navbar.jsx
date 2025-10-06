@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <>
       {/* Top Navbar (Sticky) */}
-      <nav className="bg-yellow-500 p-6 flex justify-between items-center md:ml-64 fixed top-0 left-0 right-0 z-40">
+      <nav className="bg-blue-900 p-6 text-white flex justify-between items-center md:ml-64 fixed top-0 left-0 right-0 z-40">
         {/* Menu Icon for mobile */}
         <button
           className="md:hidden text-2xl"
@@ -17,7 +17,7 @@ const Navbar = () => {
           <FaBars />
         </button>
 
-        <div className="font-bold">School ERP</div>
+        <div className="font-bold">IIST</div>
         <div>Profile | Logout</div>
       </nav>
 

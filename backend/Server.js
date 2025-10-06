@@ -2,38 +2,49 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import programRoutes from "./Routes/programRoutes.js";
-import courseRoutes from "./Routes/courseRoutes.js";
+import skillProgramRoutes from "./Routes/skillProgramRoutes.js";
+import studentRoutes from "./Routes/studentRoutes.js";
+import galleryRoutes from "./Routes/galleryRoutes.js";
 
-dotenv.config();
+
+dotenv.config(); // 👈 Make sure to load .env
+
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "http://localhost:5174",
-    "https://blog-1-rqz1.onrender.com"
-  ],
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://blog-1-rqz1.onrender.com",
+    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
-// 🔥 Serve uploaded images
+// 🔥 Serve uploaded images (frontend will call http://localhost:5000/uploads/xyz.png)
 app.use("/uploads", express.static("uploads"));
 
 // Routes
-app.use("/api/programs", programRoutes);
-app.use("/api/courses", courseRoutes);
+app.use("/api/skill-programs", skillProgramRoutes);
+app.use("/api/students", studentRoutes);
+app.use("/api/gallery", galleryRoutes);
+
 
 // Health check
 app.get("/", (req, res) => {
-  res.send("blog is live ✅");
+  res.send("IIST is Live ✅");
 });
 
 // DB Connect
-mongoose.connect(process.env.MONGO_URI)
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 

@@ -32,3 +32,46 @@ export const getSkillPrograms = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+export const deleteSkillProgram = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const program = await SkillProgram.findByIdAndDelete(id);
+
+    if (!program) {
+      return res.status(404).json({ message: "Program not found" });
+    }
+
+    res.status(200).json({ message: "Program deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Update skill program
+export const updateSkillProgram = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title } = req.body;
+
+    let updatedData = { title };
+    if (req.file) {
+      updatedData.image = req.file.filename;
+    }
+
+    const program = await SkillProgram.findByIdAndUpdate(id, updatedData, {
+      new: true,
+    });
+
+    if (!program) {
+      return res.status(404).json({ message: "Program not found" });
+    }
+
+    res.status(200).json({ message: "Program updated successfully", data: program });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};

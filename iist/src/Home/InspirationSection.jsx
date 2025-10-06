@@ -14,11 +14,11 @@ export default function InspirationSection() {
           </h2>
 
           {/* PM Modi */}
-          <div className="flex gap-6 mb-8">
+          <div className="flex flex-col md:flex-row gap-6 mb-8">
             <img
               src={pmImage}
               alt="PM Modi"
-              className="w-40 h-40 object-cover rounded-md shadow-md"
+              className="w-full md:w-40 md:h-40 h-auto object-contain rounded-md shadow-md"
             />
             <p className="text-gray-800 leading-relaxed">
               Prime Minister Modi's launch of the Skill India campaign inspired
@@ -29,11 +29,11 @@ export default function InspirationSection() {
           </div>
 
           {/* Dr. APJ Abdul Kalam */}
-          <div className="flex gap-6">
+          <div className="flex flex-col md:flex-row gap-6">
             <img
               src={kalamImage}
               alt="Dr. Kalam"
-              className="w-40 h-40 object-cover rounded-md shadow-md"
+              className="w-full md:w-40 md:h-40 h-auto object-contain rounded-md shadow-md"
             />
             <p className="text-gray-800 leading-relaxed">
               Dr. Kalam’s vision of empowering India through skill development
@@ -51,11 +51,11 @@ export default function InspirationSection() {
           </h2>
 
           {/* Logo + Text */}
-          <div className="flex items-start gap-6 mb-6">
+          <div className="flex flex-col md:flex-row items-start gap-6 mb-6">
             <img
               src={orgLogo}
               alt="Organisation Logo"
-              className="w-36 h-36 object-contain"
+              className="w-full md:w-36 md:h-36 h-auto object-contain"
             />
             <p className="text-gray-800 leading-relaxed">
               The Indian Institute of Skill Development (IISD) was founded with
@@ -81,28 +81,30 @@ export default function InspirationSection() {
             Training, and various technical skills.
           </p>
 
-          {/* Button */}
+          {/* Learn More Button */}
           <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
             Learn More
           </button>
         </div>
       </div>
+{/* ---- NEW SECTION: Buttons Grid ---- */}
+<div className="bg-gray-100 mt-16 p-8 rounded-lg">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+    <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+      Placement Cell
+    </button>
+    <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+      Student Login
+    </button>
+    <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+      Center Login
+    </button>
+    <button className="bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+      Center Invitation
+    </button>
+  </div>
+</div>
 
-      {/* ---- NEW SECTION: Buttons ---- */}
-      <div className="flex flex-wrap justify-center gap-30 mt-16">
-        <button className="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
-          Placement Cell
-        </button>
-        <button className="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
-          Student Login
-        </button>
-        <button className="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
-          Center Login
-        </button>
-        <button className="bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
-          Center Invitation
-        </button>
-      </div>
     </div>
   );
 }

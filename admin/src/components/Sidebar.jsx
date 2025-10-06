@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../public/IISD.855d404de3a326ca6293.webp"; // Replace with your logo path
 import {
   FaTachometerAlt,
   FaBook,
@@ -16,7 +17,7 @@ const Sidebar = () => {
       title: "Student",
       links: [
         { name: "Dashboard", icon: <FaTachometerAlt />, path: "#" },
-        { name: "Programs", icon: <FaBook />, path: "/Programs" },
+        { name: "Result", icon: <FaBook />, path: "/results" },
         { name: "Courses", icon: <FaFileAlt />, path: "/courses" },
         { name: "Assignments", icon: <FaBook />, path: "#" },
       ],
@@ -25,8 +26,8 @@ const Sidebar = () => {
       title: "Admin",
       links: [
         { name: "Dashboard", icon: <FaTachometerAlt />, path: "#" },
-        { name: "Students", icon: <FaUserGraduate />, path: "#" },
-        { name: "Teachers", icon: <FaChalkboardTeacher />, path: "#" },
+        { name: "Skill Program", icon: <FaUserGraduate />, path: "/admin_skill" },
+        { name: "Gallery", icon: <FaChalkboardTeacher />, path: "/admin-gallery" },
         { name: "Reports", icon: <FaFileAlt />, path: "#" },
         { name: "Timetable", icon: <FaCalendarAlt />, path: "#" },
         { name: "Users", icon: <FaUsers />, path: "#" },
@@ -37,12 +38,15 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-gray-800 text-white h-full p-4 flex flex-col">
       {/* Logo + Name */}
-      <div className="flex items-center mb-6">
-        <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center font-bold text-white">
-          ERP
-        </div>
-        <span className="ml-3 text-xl font-bold">My School ERP</span>
-      </div>
+     <div className="flex items-center mb-6">
+  <img
+    src={logo} // Replace with your logo path
+    alt="IIST Logo"
+    className="w-10 h-10 object-contain" // Adjust size as needed
+  />
+  <span className="ml-3 text-xl font-bold">IIST</span>
+</div>
+
 
       {/* Sections */}
       <div className="flex-1 overflow-y-auto">
