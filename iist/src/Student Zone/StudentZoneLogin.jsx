@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from "../images/IISD.855d404de3a326ca6293.webp";
 
-export default function Center_login() {
-  const [username, setUsername] = useState("");
+export default function StudentZoneLogin() {
+  const [studentId, setStudentId] = useState("");
   const [password, setPassword] = useState("");
   const [studentData, setStudentData] = useState(null);
   const [error, setError] = useState("");
@@ -26,15 +26,15 @@ export default function Center_login() {
       clearInterval(interval);
       setLoading(false);
 
-      if (username.trim() && password.trim()) {
+      if (studentId.trim() && password.trim()) {
         setStudentData({
-          name: "Center Admin",
-          username,
-          role: "Center",
+          name: "Student",
+          username: studentId,
+          role: "Student",
           session: password,
         });
       } else {
-        setError("Please enter Center Username and Password");
+        setError("Please enter Student ID and Password");
       }
     }, 2000);
   };
@@ -46,8 +46,8 @@ export default function Center_login() {
           <p className="text-lg font-semibold text-gray-800 mb-4">Logging in...</p>
           <div className="flex space-x-2 mb-6">
             <span className="w-3 h-3 bg-orange-500 rounded-full animate-bounce"></span>
-            <span className="w-3 h-3 bg-orange-500 rounded-full animate-bounce [animation-delay:200ms]"></span>
-            <span className="w-3 h-3 bg-orange-500 rounded-full animate-bounce [animation-delay:400ms]"></span>
+            <span className="w-3 h-3 bg-orange-500 rounded-full [animation-delay:200ms]"></span>
+            <span className="w-3 h-3 bg-orange-500 rounded-full [animation-delay:400ms]"></span>
           </div>
           <div className="w-64 max-w-full h-3 bg-gray-200 rounded-full overflow-hidden">
             <div
@@ -63,16 +63,14 @@ export default function Center_login() {
         <div className="w-full max-w-md sm:max-w-lg lg:max-w-lg">
           <div className="text-center mb-6 px-2 sm:px-0">
             <img src={logo} alt="IIST Logo" className="mx-auto w-24 sm:w-28 h-24 sm:h-28 mb-4" />
-          <h1 className="text-base sm:text-xl md:text-2xl lg:text-2xl font-semibold text-gray-800 text-center whitespace-normal md:whitespace-nowrap">
-  INDIAN INSTITUTE OF SKILL DEVELOPMENT
-</h1>
-
-
+            <h1 className="text-base sm:text-xl md:text-2xl lg:text-2xl font-semibold text-gray-800 text-center whitespace-normal md:whitespace-nowrap">
+              INDIAN INSTITUTE OF SKILL DEVELOPMENT
+            </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium mt-1">
               भारतीय कौशल विकास संस्थान
             </p>
             <h2 className="text-2xl sm:text-3xl font-semibold text-black mt-3 tracking-wide">
-              CENTER LOGIN
+              STUDENT LOGIN
             </h2>
           </div>
 
@@ -83,12 +81,12 @@ export default function Center_login() {
             {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
 
             <div className="mb-4">
-              <label className="block text-white font-semibold mb-2">Center Code</label>
+              <label className="block text-white font-semibold mb-2">Student ID</label>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter Center Username"
+                value={studentId}
+                onChange={(e) => setStudentId(e.target.value)}
+                placeholder="Enter Student ID"
                 className="w-full bg-white px-4 py-2 rounded-full border border-gray-300 focus:outline-none text-gray-700 text-sm sm:text-base"
                 required
               />
@@ -131,7 +129,7 @@ export default function Center_login() {
       ) : (
         <div className="text-center mt-6">
           <h2 className="text-xl font-bold text-gray-800">Welcome, {studentData.username}!</h2>
-          <p className="text-gray-700 mt-2">You are logged in as a Center Admin</p>
+          <p className="text-gray-700 mt-2">You are logged in as a Student</p>
         </div>
       )}
     </div>

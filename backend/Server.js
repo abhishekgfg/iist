@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import skillProgramRoutes from "./Routes/skillProgramRoutes.js";
 import studentRoutes from "./Routes/studentRoutes.js";
 import galleryRoutes from "./Routes/galleryRoutes.js";
+import contactRoutes from "./Routes/contactRoutes.js";
 
 
 dotenv.config(); // 👈 Make sure to load .env
@@ -32,11 +33,12 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/skill-programs", skillProgramRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/gallery", galleryRoutes);
+app.use("/api/contact", contactRoutes);
 
 
 // Health check
 app.get("/", (req, res) => {
-  res.send("IIST is Live ✅");
+  res.send("IISD API running...");
 });
 
 // DB Connect

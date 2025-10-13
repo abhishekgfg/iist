@@ -9,6 +9,7 @@ import ViewResults from "./pages/ViewResults";
 import AdminGallery from "./pages/AdminGallery";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ContactList from "./pages/ContactList";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/results" element={<Layout><Result /></Layout>} />
           <Route path="/view-results" element={<Layout><ViewResults /></Layout>} />
           <Route path="/admin-gallery" element={<Layout><AdminGallery /></Layout>} />
+          <Route path="/contact-list" element={<Layout><ContactList /></Layout>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>

@@ -73,7 +73,7 @@ const Header = () => {
       <FaYoutube className="cursor-pointer hover:text-gray-300" />
     </div>
  <div className="hidden md:flex items-center gap-6">
-  <a href="#" className="font-semibold italic text-sm hover:text-blue-200 transition">
+  <a href="/center-login" className="font-semibold italic text-sm hover:text-blue-200 transition">
     Centre Login
   </a>
   <a href="/Results" className="font-semibold italic text-sm hover:text-blue-200 transition">
@@ -113,10 +113,10 @@ const Header = () => {
       <nav className="bg-[#003366] relative">
         {/* Desktop Menu */}
         <ul className="hidden md:flex justify-center gap-6 py-3 text-white font-semibold text-sm flex-wrap">
-          <li><a href="/" className="hover:underline">Home</a></li>
+          <li><a href="/">Home</a></li>
           {/* About Us */}
           <li className="relative group">
-            <a href="#" className="hover:underline flex items-center gap-1">
+            <a href="#" className="flex items-center gap-1">
               About Us <span className="text-xs">▼</span>
             </a>
             <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
@@ -127,14 +127,14 @@ const Header = () => {
                 <a href="/skill-development">Skill Development in India</a>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100">
-                <a href="/affiliations">Affiliations</a>
+                <a href="/verifycentercode">Affiliations</a>
               </li>
             </ul>
           </li>
-          <li><a href="/skilldevelopmentprogram" className="hover:underline">Programs</a></li>
+          <li><a href="/skilldevelopmentprogram">Programs</a></li>
           {/* Institute Zone */}
           <li className="relative group">
-            <a href="#" className="hover:underline flex items-center gap-1">
+            <a href="#" className=" flex items-center gap-1">
               Institute Zone <span className="text-xs">▼</span>
             </a>
             <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
@@ -142,18 +142,18 @@ const Header = () => {
                 <a href="/center-login">Center Login</a>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100">
-                <a href="#">Verify Your Center Code</a>
+                <a href="/verifycentercode">Verify Your Center Code</a>
               </li>
             </ul>
           </li>
           {/* Student Zone */}
           <li className="relative group">
-            <a href="#" className="hover:underline flex items-center gap-1">
+            <a href="#" className="flex items-center gap-1">
               Student Zone <span className="text-xs">▼</span>
             </a>
             <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[220px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
-                <a href="#">Student Login</a>
+                <a href="/student-login">Student Login</a>
               </li>
               <li className="relative group/admissions">
                 <a href="#" className="px-4 py-2 block hover:bg-gray-100 flex justify-between items-center">
@@ -161,10 +161,10 @@ const Header = () => {
                 </a>
                 <ul className="absolute left-full top-0 bg-white text-black rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover/admissions:opacity-100 group-hover/admissions:visible transition-all duration-200 z-50">
                   <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
-                    <a href="#">On-demand Admission Form</a>
+                    <a href="/onDemand-registration">On-demand Admission Form</a>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <a href="#">General Admission Form</a>
+                    <a href="/Candidate-TrainingForm">General Admission Form</a>
                   </li>
                 </ul>
               </li>
@@ -177,7 +177,7 @@ const Header = () => {
                 </a>
                 <ul className="absolute left-full top-0 bg-white text-black rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover/exam:opacity-100 group-hover/exam:visible transition-all duration-200 z-50">
                   <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
-                    <a href="#">On-demand Examination Form</a>
+                    <a href="/onDemand-registration">On-demand Examination Form</a>
                   </li>
                   <li className="px-4 py-2 hover:bg-gray-100">
                     <a href="#">Calendar Examination Form</a>
@@ -191,24 +191,24 @@ const Header = () => {
           </li>
           {/* Franchise */}
           <li className="relative group">
-            <a href="#" className="hover:underline flex items-center gap-1">
+            <a href="#" className=" flex items-center gap-1">
               Franchise <span className="text-xs">▼</span>
             </a>
             <ul className="absolute left-0 top-full bg-white text-black mt-0.5 rounded shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 z-50">
               <li className="px-4 py-2 border-b border-gray-200 hover:bg-gray-100">
-                <a href="#">Apply for New Franchisee</a>
+                <a href="/applyfranchisee">Apply for New Franchisee</a>
               </li>
               <li className="px-4 py-2 hover:bg-gray-100">
                 <a href="#">Center Renewal</a>
               </li>
             </ul>
           </li>
-          <li><a href="#" className="hover:underline">Internship</a></li>
-          <li><a href="#" className="hover:underline">Training</a></li>
-          <li><a href="#" className="hover:underline">Placement</a></li>
-          <li><a href="#" className="hover:underline">Downloads</a></li>
-          <li><a href="#" className="hover:underline">Notifications</a></li>
-          <li><a href="#" className="hover:underline">Contact Us</a></li>
+          <li><a href="#" className="hover:">Internship</a></li>
+          <li><a href="#" className="hover:">Training</a></li>
+          <li><a href="#" className="hover:">Placement</a></li>
+          <li><a href="#" className="hover:">Downloads</a></li>
+          <li><a href="#" className="hover:">Notifications</a></li>
+          <li><a href="/contact-us" className="hover:">Contact Us</a></li>
         </ul>
 
         {/* Mobile Sidebar */}

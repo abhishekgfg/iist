@@ -17,7 +17,7 @@ const Navbar = () => {
           <FaBars />
         </button>
 
-        <div className="font-bold">IIST</div>
+        <div className="font-bold">INDIAN INSTITUTE OF SKILL DEVELOPMENT  </div>
         <div>Profile | Logout</div>
       </nav>
 

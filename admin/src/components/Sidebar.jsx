@@ -28,7 +28,7 @@ const Sidebar = () => {
         { name: "Dashboard", icon: <FaTachometerAlt />, path: "#" },
         { name: "Skill Program", icon: <FaUserGraduate />, path: "/admin_skill" },
         { name: "Gallery", icon: <FaChalkboardTeacher />, path: "/admin-gallery" },
-        { name: "Reports", icon: <FaFileAlt />, path: "#" },
+        { name: "Contact", icon: <FaFileAlt />, path: "/contact-list" },
         { name: "Timetable", icon: <FaCalendarAlt />, path: "#" },
         { name: "Users", icon: <FaUsers />, path: "#" },
       ],
