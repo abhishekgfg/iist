@@ -1,19 +1,18 @@
 import React from "react";
-import Banner from "../Home/Banner";
-import SkillDevelopmentPrograms from "../Home/SkillDevelopmentPrograms";
-import InspirationSection from "../Home/InspirationSection";
-import Gallery from "../Home/Gallery";
-import OurAssociates from "../Home/OurAssociates";
+import HeroSection from "../Home/HeroSection";
+import AboutSection from "../Home/AboutSection";
+import ProgramsSection from "../Home/ProgramsSection";
+import AccreditationSection from "../Home/AccreditationSection";
 
 
 function Home() {
   return (
     <>
-   <Banner />
-   <SkillDevelopmentPrograms />
-   <InspirationSection />
-   <Gallery />
-   <OurAssociates />
+  <HeroSection />
+  <AboutSection />
+  <ProgramsSection />
+  <AccreditationSection />
+
     </>
   );
 }

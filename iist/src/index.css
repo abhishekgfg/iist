@@ -7,3 +7,12 @@
 .animate-progress {
   animation: progress 1.5s linear infinite;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap');
+
+body {
+  font-family: 'Playfair Display', serif;
+}
+
+

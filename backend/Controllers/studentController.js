@@ -2,19 +2,34 @@ import Student from "../Models/Student.js";
 import PDFDocument from "pdfkit";
 
 // Student Login & Get Result
+// Student Login & Get Result
 export const loginStudent = async (req, res) => {
   const { username, password } = req.body; // password = session year
+
   try {
+    // Allow login with either Roll No or Enrollment No
     const student = await Student.findOne({
-      username,
-      "result.session": password,
+      $and: [
+        { "result.session": password },
+        {
+          $or: [
+            { username: username }, // old rollNo-based username
+            { "result.enrollmentNo": username }, // allow enrollmentNo login
+            { "result.rollNo": username } // just in case rollNo stored here too
+          ]
+        }
+      ]
     });
-    if (!student) return res.status(400).json({ message: "Invalid Roll No or Session Year" });
+
+    if (!student)
+      return res.status(400).json({ message: "Invalid Roll No / Enrollment No or Session Year" });
+
     res.json(student);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 
 // Admin - Upload Result
