@@ -6,7 +6,7 @@ import skillProgramRoutes from "./Routes/skillProgramRoutes.js";
 import studentRoutes from "./Routes/studentRoutes.js";
 import galleryRoutes from "./Routes/galleryRoutes.js";
 import contactRoutes from "./Routes/contactRoutes.js";
-
+import studentProgramRoutes from "./Routes/studentProgramRoutes.js";
 
 dotenv.config(); // 👈 Make sure to load .env
 
@@ -26,14 +26,16 @@ app.use(
 );
 app.use(express.json());
 
-// 🔥 Serve uploaded images (frontend will call http://localhost:5000/uploads/xyz.png)
+// 🔥 Serve uploaded files
 app.use("/uploads", express.static("uploads"));
+app.use("/uploads/brochures", express.static("uploads/brochures"));
 
 // Routes
 app.use("/api/skill-programs", skillProgramRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/student-programs", studentProgramRoutes);
 
 
 // Health check

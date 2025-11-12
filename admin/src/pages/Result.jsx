@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -95,7 +95,7 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    await axios.post("http://localhost:5000/api/students/upload", form);
+    await axios.post("/students/upload", form);
     toast.success("Result uploaded successfully!");
 
     // Reset form

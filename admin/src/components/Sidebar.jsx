@@ -19,7 +19,7 @@ const Sidebar = () => {
         { name: "Dashboard", icon: <FaTachometerAlt />, path: "#" },
         { name: "Result", icon: <FaBook />, path: "/results" },
         { name: "Courses", icon: <FaFileAlt />, path: "/courses" },
-        { name: "Assignments", icon: <FaBook />, path: "#" },
+        { name: "School Program List", icon: <FaBook />, path: "/school-program-list" },
       ],
     },
     {
@@ -29,7 +29,7 @@ const Sidebar = () => {
         { name: "Skill Program", icon: <FaUserGraduate />, path: "/admin_skill" },
         { name: "Gallery", icon: <FaChalkboardTeacher />, path: "/admin-gallery" },
         { name: "Contact", icon: <FaFileAlt />, path: "/contact-list" },
-        { name: "Timetable", icon: <FaCalendarAlt />, path: "#" },
+        { name: "School Proram", icon: <FaCalendarAlt />, path: "/school-program" },
         { name: "Users", icon: <FaUsers />, path: "#" },
       ],
     },

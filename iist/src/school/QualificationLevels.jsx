@@ -1,11 +1,25 @@
-import React from "react";
+// src/pages/QualificationLevels.jsx
+import React, { useEffect, useState } from "react";
+import axiosInstance from "../api/axiosInstance";
 
 export default function QualificationLevels() {
-  const levels = [
-    { level: "ISC Level 3", duration: "3 Months", title: "International Skill Certificate" },
-    { level: "ISC Level 4", duration: "6 Months", title: "International Skill Diploma" },
-    { level: "ISC Level 5", duration: "12 Months", title: "Advanced Skill Diploma" },
-  ];
+  const [levels, setLevels] = useState([]);
+
+  useEffect(() => {
+    fetchLevels();
+  }, []);
+
+  const fetchLevels = async () => {
+    try {
+      const res = await axiosInstance.get("/student-programs");
+      // Assuming you want the latest student program’s qualification levels
+      if (res.data.length > 0) {
+        setLevels(res.data[0].qualificationLevels);
+      }
+    } catch (error) {
+      console.error("❌ Error fetching qualification levels:", error);
+    }
+  };
 
   return (
     <section className="bg-gray-50 py-16">
@@ -24,13 +38,29 @@ export default function QualificationLevels() {
               </tr>
             </thead>
             <tbody>
-              {levels.map((item, index) => (
-                <tr key={index} className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
-                  <td className="py-3 px-6 text-gray-900">{item.level}</td>
-                  <td className="py-3 px-6 text-gray-900">{item.duration}</td>
-                  <td className="py-3 px-6 text-gray-900">{item.title}</td>
+              {levels.length > 0 ? (
+                levels.map((item, index) => (
+                  <tr
+                    key={index}
+                    className={`${
+                      index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                    }`}
+                  >
+                    <td className="py-3 px-6 text-gray-900">{item.level}</td>
+                    <td className="py-3 px-6 text-gray-900">{item.duration}</td>
+                    <td className="py-3 px-6 text-gray-900">{item.title}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan="3"
+                    className="py-4 text-gray-500 text-center italic"
+                  >
+                    Loading qualification levels...
+                  </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

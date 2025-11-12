@@ -1,27 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axiosInstance from "../api/axiosInstance";
 import { FaDownload, FaFileAlt, FaFileSignature } from "react-icons/fa";
 
 export default function DownloadsSection() {
-  const downloads = [
-    {
-      name: "Download Brochure",
-      icon: <FaDownload className="text-2xl" />,
-      link: "#", // replace with your brochure file link
-      color: "bg-[#1a4e92]",
-    },
-    {
-      name: "Student Admission Form",
-      icon: <FaFileSignature className="text-2xl" />,
-      link: "/admission-form", // replace with your admission form file link
-      color: "bg-[#16437d]",
-    },
-    {
-      name: "Exam Form",
-      icon: <FaFileAlt className="text-2xl" />,
-      link: "/exam-form", // replace with your exam form file link
-      color: "bg-[#123764]",
-    },
-  ];
+  const { id } = useParams();
+  const [brochures, setBrochures] = useState([]);
+
+  useEffect(() => {
+    const fetchBrochures = async () => {
+      try {
+        const res = await axiosInstance.get(`/student-programs/${id}`);
+        setBrochures(res.data.brochures || []);
+      } catch (error) {
+        console.error("Error fetching brochures:", error);
+      }
+    };
+    fetchBrochures();
+  }, [id]);
+
+  // ✅ Corrected download handler
+  const handleDownload = async (file) => {
+    try {
+      const baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+      const fileURL = `${baseURL}/uploads/brochures/${file}`; // ✅ Corrected path
+
+      console.log("📥 Downloading from:", fileURL);
+
+      const response = await axiosInstance.get(fileURL, { responseType: "blob" });
+      const blob = new Blob([response.data], { type: "application/pdf" });
+
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = file; // Use original filename
+      link.click();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("❌ Error downloading brochure:", error);
+      alert("Failed to download the brochure. Please try again.");
+    }
+  };
 
   return (
     <section className="bg-[#f9fafc] py-10 px-6 md:px-12">
@@ -34,18 +53,40 @@ export default function DownloadsSection() {
         </p>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-          {downloads.map((item, index) => (
-            <a
-              key={index}
-              href={item.link}
-              className={`${item.color} text-white py-6 px-5 rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.03] transition-transform flex flex-col items-center justify-center gap-3`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {item.icon}
-              <span className="font-semibold text-lg">{item.name}</span>
-            </a>
-          ))}
+          {/* ✅ Brochure Download Button */}
+          {brochures.length > 0 ? (
+            brochures.map((file, index) => (
+              <button
+                key={index}
+                onClick={() => handleDownload(file)} // ✅ onClick calls correct handler
+                className="bg-[#1a4e92] text-white py-6 px-5 rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.03] transition-transform flex flex-col items-center justify-center gap-3"
+              >
+                <FaDownload className="text-2xl" />
+                <span className="font-semibold text-lg">Download Brochure</span>
+              </button>
+            ))
+          ) : (
+            <p className="text-gray-500 col-span-3">
+              No brochures available for this program.
+            </p>
+          )}
+
+          {/* Static buttons */}
+          <a
+            href="/admission-form"
+            className="bg-[#16437d] text-white py-6 px-5 rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.03] transition-transform flex flex-col items-center justify-center gap-3"
+          >
+            <FaFileSignature className="text-2xl" />
+            <span className="font-semibold text-lg">Student Admission Form</span>
+          </a>
+
+          <a
+            href="/exam-form"
+            className="bg-[#123764] text-white py-6 px-5 rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.03] transition-transform flex flex-col items-center justify-center gap-3"
+          >
+            <FaFileAlt className="text-2xl" />
+            <span className="font-semibold text-lg">Exam Form</span>
+          </a>
         </div>
       </div>
     </section>

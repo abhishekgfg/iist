@@ -1,7 +1,7 @@
 import React from "react";
 import { FaBook, FaFileAlt, FaAward, FaCalendarAlt } from "react-icons/fa";
 
-export default function StudentLogin() {
+export default function StudentLoginMain() {
   return (
     <section className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 bg-white shadow-xl rounded-2xl overflow-hidden">
